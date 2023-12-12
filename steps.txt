@@ -1,0 +1,26 @@
+/* API, con get, put, post y delete de perros
+
+Datos incluir en la base de datos:
+ id = creado por la BD
+ name = string 
+ age = int
+ breed = string
+ color = str
+ city = str
+ favorite food = array [], deben guardarse en un solo campo, separado mediante una coma
+ Create date = creado por la BD, colocar datos de modificación
+ Modified date = BD
+
+---------------------------------
+2da Tabla: Información
+idDueño
+iD Perro
+
+--------------------------------
+
+3ra Tabla: Dueño
+id = BD
+nameOWNER = Creada o no, dependiendo si existe ya en la BD
+
+Metodo POST debe incluir: 
+*/
