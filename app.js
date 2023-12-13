@@ -2,7 +2,7 @@ import express  from "express";
 import dbConnection from "./database.js";
 
 
-const port = 3000;
+const port = 3005;
 const app = express();
 
 app.use(express.json());
