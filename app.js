@@ -19,17 +19,23 @@ app.get('/perros', async (req, res) =>{
 });
 
 app.post("/perros", async (req, res) =>{
-    console.log(req.body);
     let age = req.body.age;
     let name = req.body.name;
-    let query = 'INSERT INTO perros (name, age) VALUES (?,?)';
-   let [rows] = await dbConnection.execute(query, [name, age]);
-   if (rows.affectedRows) {
-    return res.status(201).json({message:'perro insertado satisfactoriamente', id:rows.insertId});
-   } else {
-    return res.status(500).json({message:'no se pudo insertar el perro'});
-   }
-   
+    if (Number.isInteger(age)) {
+       if (name.trim().length && isNaN(name)) {
+            let query = 'INSERT INTO perros (name, age) VALUES (?,?)';
+            let [rows] = await dbConnection.execute(query, [name, age]);
+            if (rows.affectedRows) {
+                return res.status(201).json({message:'Perro insertado satisfactoriamente', id:rows.insertId});
+            } else {
+                return res.status(500).json({message:'No se pudo insertar el perro'});
+            }
+       } else {
+       return res.status(500).json({message: 'Nombre de perro invalido'});
+       }
+    } else {
+        res.status(500).json({message: 'Edad de perro no valida'});
+    } 
 });
 
 app.delete('/perros', async (req, res) =>{
